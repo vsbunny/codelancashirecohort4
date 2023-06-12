@@ -7,8 +7,25 @@ from database.connection import engine
 from database import models
 
 models.Base.metadata.create_all(bind=engine)
+description = """
+PokeDex App API helps you do awesome stuff. Well, awesome for those who like Pokemon anyway.
 
-app = FastAPI()  
+
+## Users
+
+You will be able to:
+
+* **Get a list of all Pokemons**.
+* **Get a Pokemon by its id/name**.
+"""
+app = FastAPI(title="Pokedex App",
+    description=description,
+    version="0.0.1",
+    contact={
+        "name": "Vanny",
+        "email": "vannyaspasova@gmail.com",
+    })  
+
 app.include_router(pokemonRouter)
 
 
